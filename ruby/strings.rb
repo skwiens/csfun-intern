@@ -36,27 +36,32 @@ def reverse_words_new_sentence(sentence)
   return sentence_array.join(' ')
 end
 
-# In place
-def reverse_word(starting_index, sentence)
-  i = starting_index
-  j = starting_index
-  while sentence[j] != nil && sentence[j] != " "
-    j += 1
-  end
-  puts i
-  puts j
-  puts sentence[i..j]
-  reverse_in_place(sentence[i...j])
-  return j + 1
-end
-
 def reverse_words_in_place(sentence)
-  starting_index = 0
-  while starting_index != nil
-    starting_index = reverse_word(starting_index, sentence)
+  puts sentence.length
+  i = 0
+  j = 0
+
+  while sentence[j] != nil
+    while !(sentence[j+1] == " " || sentence[j+1] == nil)
+      j += 1
+      puts sentence[j]
+      puts "j=#{j}"
+    end
+
+    sentence[i..j] = reverse_new_string(sentence[i..j])
+
+    j += 1
+
+    while sentence[j] == " "
+      j += 1
+    end
+
+    i = j
     puts sentence
-    puts starting_index
+    puts i
+    puts j
   end
+
   return sentence
 end
 
